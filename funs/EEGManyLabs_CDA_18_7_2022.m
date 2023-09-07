@@ -308,6 +308,8 @@ HideCursor(whichScreen);
 
 noFixation = 0;
 for thisTrial = 1:experiment.nTrials
+    
+    disp(num2str(thisTrial))
 
     % Retrieve trial parameters
     thisTrialSetSize = data.trialSetSize(thisTrial);            % Get this trial's set size
