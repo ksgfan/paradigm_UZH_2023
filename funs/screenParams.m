@@ -23,6 +23,9 @@ refreshRate = 100;
 SetResolution(whichScreen, screenWidth, screenHeight, []);
 Screen('ConfigureDisplay', 'Scanout', whichScreen, 0, screenWidth, screenHeight, refreshRate); % refresh rate of 100hz
 
+monitorwidth_cm = 40;
+dist_cm = 70;
+
 load gammafnCRT;   % load the gamma function parameters for this monitor - or some other CRT and hope they're similar! (none of our questions rely on precise quantification of physical contrast)
 maxLum = GrayLevel2Lum(255,Cg,gam,b0);
 par.BGcolor = Lum2GrayLevel(maxLum/2,Cg,gam,b0);

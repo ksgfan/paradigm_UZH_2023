@@ -10,8 +10,7 @@ calibrateET;
 
 %% Settings
 testmode = 0;
-monitorwidth_cm = 53;
-dist_cm = 72;
+
 % Text
 tSize1 = 20;
 tSize2 = 20;

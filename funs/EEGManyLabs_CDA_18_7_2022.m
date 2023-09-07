@@ -49,7 +49,7 @@ experiment.nTrials = 144; % 5 blocks x 144 trials = 720 trials
 experiment.setSizes = [2,4,6];          % Number of items presented on the screen
 
 % Set up equipment parameters
-equipment.viewDist = 700;               % Viewing distance in millimetres
+equipment.viewDist = dist_cm * 10;               % Viewing distance in millimetres
 
 % Pixels per millimetre !! NEEDS TO BE SET. USE THE MeasureDpi FUNCTION !! 
 % http://www.endmemo.com/sconvert/dpipixel_cm.php

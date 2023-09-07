@@ -5,8 +5,8 @@ p.keys	      = KbName('space');
 p.quitKey     = KbName('q');
 p.tmp = Screen('Resolution',p.monitor);
 p.resolution = [p.tmp.width, p.tmp.height];
-p.dist =  70;  % viewing distance (cm)
-p.width = 40;  % width of screen (cm) (macBook = 33)
+p.dist =  dist_cm;  % viewing distance (cm)
+p.width = monitorwidth_cm;  % width of screen (cm) (macBook = 33)
 p.pixelSize=p.width/p.resolution(1);
 p.backColor = [128, 128, 128];
 p.white = [200 200 200];
