@@ -41,19 +41,9 @@ ins.resting.end = [...
     'Nun folgen weitere Aufgaben. '...
     ];
 %% Trials
-
-% EEGManyLabs protocol: 8 min of RS. EO and EC randomized. Two possible
-% sequences:
-
-seq1 = {'o', 'c', 'c', 'o', 'c', 'o', 'o', 'c'};
-seq2 = {'c', 'o', 'o', 'c', 'o', 'c', 'c', 'o'};
-
-% randomize the sequence
-if randi(2) == 1
-    sequence = seq1;
-else
-    sequence = seq2;
-end
+NrOfTrials = 7;   % How many Cycles to run (8 if  you want to run 6 cycles)
+eyeO = 3:60:303; % Audio cues
+eyeC = 23:60:323;
 
 % Setting the Audiofiles
 wavfilename_probe1 = fullfile(FUNS_PATH, 'open_eyes.wav'); %Open Eyes
@@ -95,7 +85,6 @@ try
     end
     try
         InitializePsychSound;
-        %PsychPortAudio('GetDevices')
         pahandle = PsychPortAudio('Open', [], [], 0, freq1, nrchannels, [], sugLat); % look for devices
         duration_probe1 = size(wavedata_probe1,2)/freq1;
         duration_probe2 = size(wavedata_probe2,2)/freq1;
@@ -106,6 +95,9 @@ catch
     error('Sound Error');
 end
 
+i = 1;
+t = 1;
+tt = 1;
 
 %% Experiment ptbWindow
 clc;
@@ -130,21 +122,26 @@ end
 time = GetSecs;
 
 % send triggers: task starts!
+% EThndl.sendMessage(par.CD_START);
 Eyelink('Message',num2str(par.CD_START));
 Eyelink('command', 'record_status_message "START"');
 sendtrigger(par.CD_START,port,SITE,stayup)
 
+%while ~KbCheck
+if testmode == 1
+    trials = 4; % Test Mode
+else
+    trials = NrOfTrials;
+end
 fprintf('Running Trials\n');
-for t = 1 : length(sequence)
-
-    % draw fixation cross 
-    Screen('DrawLine', ptbWindow,[0 0 0],center(1)-  center(1) / 50,center(2), center(1) + center(1) / 50,center(2));
-    Screen('DrawLine', ptbWindow,[0 0 0],center(1), center(2)- center(2) / 50, center(1),center(2) + center(2) / 50);
+while t < trials
+    Screen('DrawLine', ptbWindow,[0 0 0],center(1)-7,center(2), center(1)+7,center(2));
+    Screen('DrawLine', ptbWindow,[0 0 0],center(1),center(2)-7, center(1),center(2)+7);
     vbl = Screen('Flip',ptbWindow); % clc
-
-    % eyes open
-    if strcmp(sequence{t}, 'o')
+    if vbl >=time+eyeO(t) %Tests if a second has passed
+        
         % send triggers
+        % EThndl.sendMessage(par.CD_eyeO);
         Eyelink('Message',num2str(par.CD_eyeO));
         Eyelink('command', 'record_status_message "EyeO"');
         sendtrigger(par.CD_eyeO,port,SITE,stayup)
@@ -153,11 +150,13 @@ for t = 1 : length(sequence)
         
         PsychPortAudio('FillBuffer', pahandle,wavedata_probe1);
         PsychPortAudio('Start', pahandle, 1, 0, 1);
-        WaitSecs(60);
+        t = t+1;
+    end
+    
+    if vbl >=time+eyeC(tt) %Tests if a second has passed
 
-    % eyes closed
-    elseif strcmp(sequence{t}, 'c') 
         % send triggers
+%         EThndl.sendMessage(par.CD_eyeC);
         Eyelink('Message',num2str(par.CD_eyeC));
         Eyelink('command', 'record_status_message "EyeC"');
         sendtrigger(par.CD_eyeC,port,SITE,stayup)
@@ -165,16 +164,17 @@ for t = 1 : length(sequence)
         disp('Eyes Closed');
         PsychPortAudio('FillBuffer', pahandle,wavedata_probe2);
         PsychPortAudio('Start', pahandle, 1, 0, 1);
-        WaitSecs(60);
+        tt = tt+1;
     end
 end
 
 % send triggers
+% EThndl.sendMessage(par.CD_END);
 Eyelink('Message',num2str(par.CD_END));
 Eyelink('command', 'record_status_message "End"');
 sendtrigger(par.CD_END,port,SITE,stayup)
 
-disp('Resting state done');
+disp('Done');
 Screen('TextSize', ptbWindow, tSize3);
 DrawFormattedText(ptbWindow, ins.misc.finished,'center', 0.4*scresh, colorText);
 Screen('TextSize', ptbWindow, tSize2);
