@@ -1,6 +1,6 @@
-This folder contains experimental code for the replication of Vogel, E. K., & Machizawa, M. G. (2004). Neural activity predicts individual differences in visual working memory capacity. Nature, 428(6984), 748–751.
+## This folder contains experimental code for the replication of Vogel, E. K., & Machizawa, M. G. (2004). Neural activity predicts individual differences in visual working memory capacity. Nature, 428(6984), 748–751.
 
-IMPORTANT!
+## IMPORTANT!
 1. Ensure that the paths in master.m are correct.
 2. Verify that the screen resolution and refresh rate are set correctly in /funs/screenParams.m.
 3. Double-check that dist_cm and monitorwidth_cm are set correctly in /funs/screenParams.m.
@@ -9,17 +9,17 @@ IMPORTANT!
 6. Please note that subject IDs MUST consist of 2 numbers (e.g., 01, 02, …, 10, 11, etc.)
 
 
-Triggers for eye movement measure:
+## Triggers for eye movement measure:
 
-9 - start trigger
-89 - end trigger
-101 - left 6 degree saccade
-102 - left 3 degree saccade
-103 - right 3 degree saccade
-104 - right 6 degree saccade
-55 - response (spacebar)
+* 9 - start trigger
+* 89 - end trigger
+* 101 - left 6 degree saccade
+* 102 - left 3 degree saccade
+* 103 - right 3 degree saccade
+* 104 - right 6 degree saccade
+* 55 - response (spacebar)
 
-Triggers for Resting EEG
+## Triggers for Resting EEG
 
 10 - start trigger
 90 - end trigger
