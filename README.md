@@ -19,37 +19,37 @@
 * 104 - right 6 degree saccade
 * 55 - response (spacebar)
 
-## Triggers for Resting EEG
+## Triggers for Resting EEG
 
-10 - start trigger
-90 - end trigger
-20 - eyes open
-30 - eyes closed
+* 10 - start trigger
+* 90 - end trigger
+* 20 - eyes open
+* 30 - eyes closed
 
-Triggers for CDA task:
+## Triggers for CDA task:
 
-TASK_START = 11/12/13/14/15;
-TASK_END = 91/92/93/94/95;
-CUE_LEFT = 3;
-CUE_RIGHT = 7;
-SETSIZE2 = 21;
-SETSIZE4 = 41;
-SETSIZE6 = 61;
-RETENTION = 50;
-TEST2 = 22;
-TEST4 = 42;
-TEST6 = 62;
-RESP_SAME_CORR = 76;
-RESP_DIFF_CORR = 77;
-RESP_SAME_INCORR = 78;
-RESP_DIFF_INCORR = 79;
+* TASK_START = 11/12/13/14/15;
+* TASK_END = 91/92/93/94/95;
+* CUE_LEFT = 3;
+* CUE_RIGHT = 7;
+* SETSIZE2 = 21;
+* SETSIZE4 = 41;
+* SETSIZE6 = 61;
+* RETENTION = 50;
+* TEST2 = 22;
+* TEST4 = 42;
+* TEST6 = 62;
+* RESP_SAME_CORR = 76;
+* RESP_DIFF_CORR = 77;
+* RESP_SAME_INCORR = 78;
+* RESP_DIFF_INCORR = 79;
 
-Timing for CDA task (all in seconds):
-timing.cue = .2;                    % Duration of arrow cue
-timing.minSOA = .3;                 % Minimum stimulus onset asynchrony
-timing.maxSOA = .4;                 % Maximum stimulus onset asynchrony
-timing.memoryArray = .1;            % Duration of memory array
-timing.retentionInterval = 0.9;     % Duration of blank retention interval
+## Timing for CDA task (all in seconds):
+* timing.cue = .2;                    % Duration of arrow cue
+* timing.minSOA = .3;                 % Minimum stimulus onset asynchrony
+* timing.maxSOA = .4;                 % Maximum stimulus onset asynchrony
+* timing.memoryArray = .1;            % Duration of memory array
+* timing.retentionInterval = 0.9;     % Duration of blank retention interval
 timing.testArray = 2;               % Duration of test array                 
 timing.minITI = .3;                 % Duration of the inter-trial interval     
 timing.maxITI = .4;                 % Duration of the inter-trial interval
