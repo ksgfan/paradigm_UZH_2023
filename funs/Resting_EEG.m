@@ -64,7 +64,7 @@ par.CD_START = 10;
 par.CD_eyeO = 20;
 par.CD_eyeC = 30;
 par.CD_END  = 90;
-
+par.sequence = sequence;
 
 %% Screen Calculations
 [scresw, scresh]=Screen('WindowSize',whichScreen);  % Get screen resolution
@@ -187,7 +187,7 @@ WaitSecs(5);
 subjectID = num2str(subject.ID);
 filePath = fullfile(DATA_PATH, subjectID);
 mkdir(filePath)
-save(fullfile(filePath, [subjectID,'_', TASK, '.mat']),'par','eyeO','eyeC');
+save(fullfile(filePath, [subjectID,'_', TASK, '.mat']),'par');
 
 % close and save EEG and ET
 disp('SAVING DATA...');
