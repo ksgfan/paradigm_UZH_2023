@@ -138,8 +138,8 @@ fprintf('Running Trials\n');
 for t = 1 : length(sequence)
 
     % draw fixation cross 
-    Screen('DrawLine', ptbWindow,[0 0 0],center(1)-  center(1) / 50,center(2), center(1) + center(1) / 50,center(2));
-    Screen('DrawLine', ptbWindow,[0 0 0],center(1), center(2)- center(2) / 50, center(1),center(2) + center(2) / 50);
+    Screen('DrawLine', ptbWindow,[0 0 0],center(1) -  center(1) / 50,center(2), center(1) + center(1) / 50,center(2));
+    Screen('DrawLine', ptbWindow,[0 0 0],center(1), center(2) - center(2) / 50, center(1),center(2) + center(2) / 50);
     vbl = Screen('Flip',ptbWindow); % clc
 
     % eyes open
