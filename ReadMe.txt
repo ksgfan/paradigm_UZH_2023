@@ -3,7 +3,7 @@ This folder contains experimental code for the replication of Vogel, E. K., & Ma
 IMPORTANT!
 1. Ensure that the paths in master.m are correct.
 2. Verify that the screen resolution and refresh rate are set correctly in /funs/screenParams.m.
-3. Double-check that p.dist and p.width are set correctly in /eyemovement_update/Preferences.m.
+3. Double-check that dist_cm and monitorwidth_cm are set correctly in /funs/screenParams.m.
 4. Confirm that equipment.viewDist and equipment.ppm are set correctly in /funs/EEGManyLabs_CDA_18_7_2022.m.
 5. Verify the proper configuration for sending EEG and ET triggers in /eyemovement_update/eyeMovementMeasure_2.m, /funs/EEGManyLabs_CDA_18_7_2022.m and /funs/Resting_EEG.m.
 6. Please note that subject IDs MUST consist of 2 numbers (e.g., 01, 02, …, 10, 11, etc.)
@@ -43,3 +43,13 @@ RESP_SAME_CORR = 76;
 RESP_DIFF_CORR = 77;
 RESP_SAME_INCORR = 78;
 RESP_DIFF_INCORR = 79;
+
+Timing for CDA task (all in seconds):
+timing.cue = .2;                    % Duration of arrow cue
+timing.minSOA = .3;                 % Minimum stimulus onset asynchrony
+timing.maxSOA = .4;                 % Maximum stimulus onset asynchrony
+timing.memoryArray = .1;            % Duration of memory array
+timing.retentionInterval = 0.9;     % Duration of blank retention interval
+timing.testArray = 2;               % Duration of test array                 
+timing.minITI = .3;                 % Duration of the inter-trial interval     
+timing.maxITI = .4;                 % Duration of the inter-trial interval
