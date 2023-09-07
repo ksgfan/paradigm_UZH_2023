@@ -126,7 +126,9 @@ timing.maxSOA = .4;                 % Maximum stimulus onset asynchrony
 timing.memoryArray = .1;            % Duration of memory array
 timing.retentionInterval = 0.9;     % Duration of blank retention interval
 timing.testArray = 2;               % Duration of test array
-timing.ITI = 1.5;                   % Duration of the inter-trial interval     
+%timing.ITI = 1.5;                   % Duration of the inter-trial interval     
+timing.minITI = .3;  
+timing.maxITI = .4;
 
 % Shuffle rng for random elements
 rng('default');             
@@ -238,6 +240,7 @@ data.trialSetSize = experiment.setSizes(mod(randperm(experiment.nTrials),experim
 data.trialIfChange = mod(randperm(experiment.nTrials),2);       % 0 for no change, 1 for change 
 data.trialCuedSide = mod(randperm(experiment.nTrials),2);       % 0 for left, 1 for right
 data.trialSOA = mod(randperm(experiment.nTrials),round((timing.maxSOA-timing.minSOA)/flipInterval));    % Determine each trial's stimulus onset asychrony
+data.trialITI = mod(randperm(experiment.nTrials),round((timing.maxITI-timing.minITI)/flipInterval));    % Determine each trial's trial onset asychrony
 
 % Randomize item locations on each trial. This will take approximately 3
 % seconds.
@@ -319,6 +322,7 @@ for thisTrial = 1:experiment.nTrials
     thisTrialCuedSide = data.trialCuedSide(thisTrial);          % Get this trial's cued side
     thisTrialSOA = data.trialSOA(thisTrial);                    % Get this trial's random stimulus onset asychrony
     thisTrialChange = data.trialIfChange(thisTrial);            % Get whether this is a change trial or no change trial
+    thisTrialITI = data.trialITI(thisTrial);
     
     % Center item rects for the trial
     thisTrialLRects = [];       % Clear left item rects from previous trial
@@ -338,7 +342,7 @@ for thisTrial = 1:experiment.nTrials
         TRIGGER = CUE_LEFT;
     end
     Screen('DrawLines',ptbWindow,fixCoords,stimulus.fixationLineWidth,stimulus.fixationColor,[screenCentreX screenCentreY],2); % Draw fixation cross
-    cueTime = Screen('Flip',ptbWindow, endTime + timing.ITI);
+    cueTime = Screen('Flip',ptbWindow, endTime + timing.minITI + thisTrialITI.*flipInterval);
     Screen('TextSize', ptbWindow, text.instructionPoints);
 
     % send trigger
