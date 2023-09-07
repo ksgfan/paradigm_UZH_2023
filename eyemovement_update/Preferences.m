@@ -1,4 +1,4 @@
-function p = Preferences()
+function p = Preferences(dist_cm, monitorwidth_cm)
 % Setup preferences for this experiment
 p.monitor     = 1; %max(Screen('Screens'));
 p.keys	      = KbName('space');

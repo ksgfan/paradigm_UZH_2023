@@ -57,7 +57,7 @@ Screen('Preference', 'SkipSyncTests', 0);
 
 % Preferences function stores various information such as monitor number,
 % background color, distance from the monitor, size of the monitor, etc.
-prefs = Preferences();
+prefs = Preferences(dist_cm, monitorwidth_cm);
 
 % Initialize function will check the data names and open up the window.
 prefs = Initialize(prefs);
