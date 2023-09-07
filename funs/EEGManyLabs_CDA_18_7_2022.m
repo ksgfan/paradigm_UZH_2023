@@ -113,6 +113,7 @@ if BLOCK == 1
     'Feedback will not be provided \n\n' ...
     'Press any key to continue'];
 else
+    loadingText = ['Loading the task...'];
     startExperimentText = ['Block ' num2str(BLOCK) ' / 5 \n\n' ...
                            'Press any key to continue.'];
 end
